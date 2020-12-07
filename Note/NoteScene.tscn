@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Note/NoteScript.gd" type="Script" id=1]
+[ext_resource path="res://Note/NoteDefaultStyle.tres" type="StyleBox" id=2]
+
+[node name="Note" type="Panel"]
+margin_right = 264.0
+margin_bottom = 179.0
+hint_tooltip = "Thats where the comments should go, but how to fill it in game?"
+focus_mode = 2
+mouse_default_cursor_shape = 2
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="TextEdit" parent="."]
+anchor_right = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 28.0
+text = "Title"
+context_menu_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="Control" parent="."]
+anchor_top = 0.273585
+anchor_right = 1.0
+anchor_bottom = 0.660377
+margin_left = 4.0
+margin_right = -4.0
+focus_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Comments" type="TextEdit" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -32.0
+margin_right = -2.0
+margin_bottom = -2.0
+context_menu_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoteCloseButton" type="Button" parent="."]
+margin_left = 245.264
+margin_top = -20.0
+margin_right = 265.264
+margin_bottom = -3.05176e-05
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+margin_right = 20.0
+margin_bottom = 20.0
+[connection signal="focus_entered" from="." to="." method="_on_Note_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_Note_focus_exited"]
+[connection signal="gui_input" from="." to="." method="_on_Note_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_Note_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Note_mouse_exited"]
+[connection signal="focus_entered" from="Title" to="." method="_on_Title_focus_entered"]
+[connection signal="focus_exited" from="Title" to="." method="_on_Title_focus_exited"]
+[connection signal="gui_input" from="Title" to="." method="_on_Title_gui_input"]
+[connection signal="mouse_entered" from="Title" to="." method="_on_Title_mouse_entered"]
+[connection signal="mouse_exited" from="Title" to="." method="_on_Title_mouse_exited"]
+[connection signal="text_changed" from="Title" to="." method="_on_Title_text_changed"]
+[connection signal="focus_entered" from="Comments" to="." method="_on_Comments_focus_entered"]
+[connection signal="focus_exited" from="Comments" to="." method="_on_Comments_focus_exited"]
+[connection signal="gui_input" from="Comments" to="." method="_on_Comments_gui_input"]
+[connection signal="mouse_entered" from="Comments" to="." method="_on_Comments_mouse_entered"]
+[connection signal="mouse_exited" from="Comments" to="." method="_on_Comments_mouse_exited"]
+[connection signal="text_changed" from="Comments" to="." method="_on_Comments_text_changed"]
+[connection signal="button_up" from="NoteCloseButton" to="." method="_on_NoteCloseButton_button_up"]
+[connection signal="mouse_entered" from="NoteCloseButton" to="." method="_on_NoteCloseButton_mouse_entered"]
+[connection signal="mouse_exited" from="NoteCloseButton" to="." method="_on_NoteCloseButton_mouse_exited"]
+[connection signal="focus_entered" from="PopupMenu" to="." method="_on_PopupMenu_focus_entered"]
+[connection signal="focus_exited" from="PopupMenu" to="." method="_on_PopupMenu_focus_exited"]
+[connection signal="index_pressed" from="PopupMenu" to="." method="_on_PopupMenu_index_pressed"]
+[connection signal="mouse_entered" from="PopupMenu" to="." method="_on_PopupMenu_mouse_entered"]
+[connection signal="popup_hide" from="PopupMenu" to="." method="_on_PopupMenu_popup_hide"]

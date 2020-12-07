@@ -1,0 +1,369 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ActivityLog/DailyActivityLogScript.gd" type="Script" id=1]
+[ext_resource path="res://MainScript.gd" type="Script" id=2]
+[ext_resource path="res://Note/NewNoteButtonScript.gd" type="Script" id=3]
+[ext_resource path="res://ActivityLog/DailyActivityListScript.gd" type="Script" id=4]
+[ext_resource path="res://ActivityLog/EditActivityLogPanelScript.gd" type="Script" id=5]
+[ext_resource path="res://FileSystemHandlerScript.gd" type="Script" id=6]
+[ext_resource path="res://Note/NoteHandler.gd" type="Script" id=7]
+[ext_resource path="res://Note/NoteListScript.gd" type="Script" id=8]
+[ext_resource path="res://Note/NoteListPanelScript.gd" type="Script" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.12549, 0.129412, 0.223529, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.388235, 0.388235, 0.388235, 1 )
+border_blend = true
+shadow_size = 2
+
+[node name="Main" type="Node"]
+script = ExtResource( 2 )
+
+[node name="FileSystemHandler" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="NoteHandler" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="NewNoteButton" type="Button" parent="."]
+margin_left = 430.0
+margin_top = 7.0
+margin_right = 505.0
+margin_bottom = 27.0
+text = "New Note"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DailyActivityLog" type="Panel" parent="."]
+margin_left = 11.1909
+margin_top = 431.335
+margin_right = 214.191
+margin_bottom = 589.335
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SelectedDateLabel" type="Label" parent="DailyActivityLog"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -26.5
+margin_right = 26.5
+margin_bottom = 14.0
+text = "Sel Date"
+align = 1
+
+[node name="LogLabel" type="Label" parent="DailyActivityLog"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -36.5
+margin_right = 36.5
+margin_bottom = 14.0
+text = "Today's Log"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DailyActivityList" type="ItemList" parent="DailyActivityLog"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -39.5
+margin_bottom = 32.5
+allow_rmb_select = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DailyActPopupMenu" type="PopupMenu" parent="DailyActivityLog/DailyActivityList"]
+margin_top = -40.0
+margin_right = 20.0
+margin_bottom = -20.0
+
+[node name="CalendarButton" type="Button" parent="DailyActivityLog"]
+margin_left = 66.4821
+margin_top = 17.4953
+margin_right = 133.482
+margin_bottom = 37.4953
+text = "Calendar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewLogButton" type="Button" parent="DailyActivityLog"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 2.52101
+margin_top = -23.0
+margin_right = 40.0
+margin_bottom = -4.0
+text = "New"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditButton" type="Button" parent="DailyActivityLog"]
+margin_left = 50.4199
+margin_top = 135.504
+margin_right = 86.4199
+margin_bottom = 155.504
+text = "Edit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteButton" type="Button" parent="DailyActivityLog"]
+margin_left = 93.9073
+margin_top = 135.504
+margin_right = 148.907
+margin_bottom = 155.504
+text = "Delete"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartActivityButton" type="Button" parent="DailyActivityLog"]
+margin_left = 29.8403
+margin_top = 112.219
+margin_right = 70.8403
+margin_bottom = 132.219
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndActivityButton" type="Button" parent="DailyActivityLog"]
+margin_left = 76.3615
+margin_top = 112.109
+margin_right = 111.361
+margin_bottom = 132.109
+text = "End"
+
+[node name="BackButton" type="Button" parent="DailyActivityLog"]
+margin_left = 3.78148
+margin_top = 18.2773
+margin_right = 23.7815
+margin_bottom = 38.2773
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ForwardButton" type="Button" parent="DailyActivityLog"]
+margin_left = 138.025
+margin_top = 17.647
+margin_right = 158.025
+margin_bottom = 37.647
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewButton" type="Button" parent="DailyActivityLog"]
+margin_left = 153.958
+margin_top = 135.297
+margin_right = 195.958
+margin_bottom = 155.297
+text = "View"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditPanel" type="Panel" parent="DailyActivityLog"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.0
+margin_top = -60.0
+margin_right = 77.0
+margin_bottom = 77.5
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionLabel" type="Label" parent="DailyActivityLog/EditPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -37.0
+margin_top = 4.0
+margin_right = 37.0
+margin_bottom = 14.0
+text = "Description"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionEdit" type="LineEdit" parent="DailyActivityLog/EditPanel"]
+anchor_right = 1.0
+margin_left = 3.36975
+margin_top = 22.9075
+margin_right = -4.63025
+margin_bottom = 46.9075
+placeholder_text = "Description"
+
+[node name="EditDoneButton" type="Button" parent="DailyActivityLog/EditPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -23.0
+margin_top = -24.0
+margin_right = 23.0
+margin_bottom = -4.0
+text = "Done"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLabel" type="Label" parent="DailyActivityLog/EditPanel"]
+margin_left = 69.5459
+margin_top = 54.7815
+margin_right = 74.5459
+margin_bottom = 68.7815
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartTimeEdit" type="LineEdit" parent="DailyActivityLog/EditPanel"]
+margin_left = 5.21884
+margin_top = 50.0
+margin_right = 63.2188
+margin_bottom = 74.0
+
+[node name="EndTimeEdit" type="LineEdit" parent="DailyActivityLog/EditPanel"]
+margin_left = 86.3442
+margin_top = 50.42
+margin_right = 144.344
+margin_bottom = 74.42
+
+[node name="TypeLabel" type="Label" parent="DailyActivityLog/EditPanel"]
+margin_left = 8.19325
+margin_top = 78.7811
+margin_right = 48.1933
+margin_bottom = 92.7811
+text = "Type"
+
+[node name="TypeEdit" type="LineEdit" parent="DailyActivityLog/EditPanel"]
+margin_left = 53.0
+margin_top = 79.0
+margin_right = 139.0
+margin_bottom = 103.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Comment" type="Label" parent="."]
+margin_left = 7.55804
+margin_top = -124.869
+margin_right = 526.558
+margin_bottom = -93.8688
+text = "Note contents can be anything from plaintext to checklist to image to gif to video
+Comments should not be visible by default?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Comment2" type="Label" parent="."]
+margin_left = 12.5686
+margin_top = -76.4334
+margin_right = 514.569
+margin_bottom = -62.4334
+text = "notes: invisible objects that the mouse can see. basically manual highlighting?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoteListPanel" type="Panel" parent="."]
+anchor_left = 0.83
+anchor_top = 0.754
+anchor_right = 0.83
+anchor_bottom = 0.754
+margin_left = -112.92
+margin_top = -123.4
+margin_right = 112.08
+margin_bottom = 123.6
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NotesLabel" type="Label" parent="NoteListPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Notes"
+
+[node name="NoteList" type="ItemList" parent="NoteListPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.5
+margin_top = -86.0
+margin_right = 112.5
+margin_bottom = 86.0
+allow_rmb_select = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoteListPopupMenu" type="PopupMenu" parent="NoteListPanel/NoteList"]
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="ViewNoteButton" type="Button" parent="NoteListPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -21.0
+margin_top = -24.0
+margin_right = 21.0
+margin_bottom = -4.0
+text = "View"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectedNote" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="NewNoteButton" to="NewNoteButton" method="_on_NewNoteButton_button_up"]
+[connection signal="item_rmb_selected" from="DailyActivityLog/DailyActivityList" to="DailyActivityLog/DailyActivityList" method="_on_DailyActivityList_item_rmb_selected"]
+[connection signal="item_selected" from="DailyActivityLog/DailyActivityList" to="." method="_on_DailyActivityList_item_selected"]
+[connection signal="index_pressed" from="DailyActivityLog/DailyActivityList/DailyActPopupMenu" to="DailyActivityLog/DailyActivityList" method="_on_DailyActPopupMenu_index_pressed"]
+[connection signal="popup_hide" from="DailyActivityLog/DailyActivityList/DailyActPopupMenu" to="DailyActivityLog/DailyActivityList" method="_on_DailyActPopupMenu_popup_hide"]
+[connection signal="button_up" from="DailyActivityLog/CalendarButton" to="DailyActivityLog" method="_on_CalendarButton_button_up"]
+[connection signal="button_up" from="DailyActivityLog/NewLogButton" to="DailyActivityLog" method="_on_NewLogButton_button_up"]
+[connection signal="button_up" from="DailyActivityLog/EditButton" to="DailyActivityLog" method="_on_EditButton_button_up"]
+[connection signal="button_up" from="DailyActivityLog/DeleteButton" to="DailyActivityLog" method="_on_DeleteButton_button_up"]
+[connection signal="button_up" from="DailyActivityLog/BackButton" to="DailyActivityLog" method="_on_BackButton_button_up"]
+[connection signal="button_up" from="DailyActivityLog/ForwardButton" to="DailyActivityLog" method="_on_ForwardButton_button_up"]
+[connection signal="button_up" from="DailyActivityLog/ViewButton" to="DailyActivityLog" method="_on_ViewButton_button_up"]
+[connection signal="text_changed" from="DailyActivityLog/EditPanel/DescriptionEdit" to="DailyActivityLog/EditPanel" method="_on_DescriptionEdit_text_changed"]
+[connection signal="button_up" from="DailyActivityLog/EditPanel/EditDoneButton" to="DailyActivityLog" method="_on_EditDoneButton_button_up"]
+[connection signal="text_changed" from="DailyActivityLog/EditPanel/TypeEdit" to="DailyActivityLog/EditPanel" method="_on_TypeEdit_text_changed"]
+[connection signal="item_rmb_selected" from="NoteListPanel/NoteList" to="NoteListPanel/NoteList" method="_on_NoteList_item_rmb_selected"]
+[connection signal="index_pressed" from="NoteListPanel/NoteList/NoteListPopupMenu" to="NoteListPanel/NoteList" method="_on_NoteListPopupMenu_index_pressed"]
+[connection signal="popup_hide" from="NoteListPanel/NoteList/NoteListPopupMenu" to="NoteListPanel/NoteList" method="_on_NoteListPopupMenu_popup_hide"]
+[connection signal="button_up" from="NoteListPanel/ViewNoteButton" to="NoteListPanel" method="_on_ViewNoteButton_button_up"]
